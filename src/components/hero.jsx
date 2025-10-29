@@ -33,7 +33,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col md:flex-row items-center justify-center md:justify-between w-full min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden pt-24 md:pt-28"
+      className="relative flex flex-col md:flex-row items-center justify-start md:justify-between w-full min-h-screen bg-cover bg-center bg-no-repeat overflow-hidden pt-24 md:pt-28"
+      // ↑ only top padding to handle navbar height
       style={{
         backgroundImage: "url('/images/parliament.jpg')",
       }}
@@ -61,23 +62,12 @@ export default function Hero() {
 
         <img
           src="/images/signature.png"
-          className="h-12 md:h-14 mb-4"
+          className="h-12 md:h-14 mb-3"
           alt="signature"
         />
-
-        {/* On mobile, place image here */}
-        <div className="md:hidden flex justify-center mt-0">
-          <div className="w-56 h-56 rounded-full overflow-hidden border-4 border-green-600 shadow-lg">
-            <img
-              src="/images/principal.jpg"
-              alt="Muhammad Arif"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
       </motion.div>
 
-      {/* On desktop, image stays on right */}
+      {/* Right: Image (desktop) */}
       <motion.div
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
@@ -93,7 +83,18 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Cursor blink animation */}
+      {/* Image (mobile only) */}
+      <div className="flex md:hidden justify-center mt-4 mb-6 relative z-10">
+        <div className="w-56 h-56 rounded-full overflow-hidden border-4 border-green-600 shadow-lg">
+          <img
+            src="/images/principal.jpg"
+            alt="Muhammad Arif"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Cursor blink */}
       <style jsx>{`
         .blinking-cursor {
           animation: blink 0.8s infinite;
